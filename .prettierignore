@@ -1,0 +1,7 @@
+pnpm-lock.yaml
+dist/
+.wrangler/
+coverage/
+worker/worker-configuration.d.ts
+docs/spec.md
+**/.svelte-kit

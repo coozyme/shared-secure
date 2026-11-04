@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="description" content="Share end-to-end encrypted notes that expire." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- Blocking, external (no inline script): applies a saved theme before first paint. -->
+    <script src="/theme-init.js"></script>
+    %sveltekit.head%
+  </head>
+  <!-- Full page loads for every navigation, so each document gets its own path's CSP (ADR 0009). -->
+  <body data-sveltekit-reload data-sveltekit-preload-data="off">
+    <div class="contents">%sveltekit.body%</div>
+    <noscript>Shared needs JavaScript: encryption happens in your browser.</noscript>
+  </body>
+</html>

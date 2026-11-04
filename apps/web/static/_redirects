@@ -1,0 +1,3 @@
+# Recipient links render prerendered client-side shells; the URL (and #key) stay unchanged (ADR 0009).
+/n/:id/delete /n/_/delete 200
+/n/:id /n/_ 200

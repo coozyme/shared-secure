@@ -1,0 +1,15 @@
+# Copy to .dev.vars for local development. Never commit .dev.vars.
+ENVIRONMENT=development
+# Cloudflare Turnstile test keys that always pass. Failing pair: site 2x00000000000000000000AB,
+# secret 2x0000000000000000000000000000000AA.
+TURNSTILE_SITE_KEY=1x00000000000000000000AA
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+# Test keys do not return our hostname, so skip the hostname check locally.
+TURNSTILE_EXPECTED_HOSTNAME=
+# Any random string of 32+ chars. Generate with: openssl rand -base64 48
+IP_HASH_SECRET=dev-only-ip-hash-secret-change-me-0000000000
+# Optional: SHA-256 (base64url) of an admin revoke token. Empty disables the admin path.
+ADMIN_TOKEN_HASH=
+FEATURE_NOTES=true
+FEATURE_FILES=false
+FEATURE_LIVE_NOTES=false

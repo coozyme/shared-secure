@@ -1,0 +1,125 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens (docs/design-spec.md, ADR 0010). Light is the default. Contrast is checked
+ * against WCAG 2.2 AA: text ≥ 4.5:1, UI boundaries and focus rings ≥ 3:1.
+ */
+:root {
+  color-scheme: light;
+  --background: #f6f8f9;
+  --surface: #ffffff;
+  --surface-sunken: #eef2f3;
+  --foreground: #202a35;
+  --muted: #5b6872;
+  --primary: #244d4a;
+  --primary-hover: #193d3a;
+  --on-primary: #ffffff;
+  --accent: #72948e;
+  --accent-soft: #e5eeec;
+  --border: #e6ebed;
+  --border-strong: #7d8a91;
+  --success: #397b5d;
+  --success-soft: #e8f2ec;
+  --warning: #866a34;
+  --warning-soft: #f6efe1;
+  --danger: #b45353;
+  --danger-soft: #f8e9e9;
+  --focus: #244d4a;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --background: #0e1316;
+  --surface: #151c20;
+  --surface-sunken: #11171a;
+  --foreground: #e3e9ec;
+  --muted: #9aa8b0;
+  --primary: #8cc4bc;
+  --primary-hover: #a6d4cd;
+  --on-primary: #0e1316;
+  --accent: #6f948e;
+  --accent-soft: #1b2a29;
+  --border: #263036;
+  --border-strong: #5d6b73;
+  --success: #7cc7a1;
+  --success-soft: #16261e;
+  --warning: #d9b36e;
+  --warning-soft: #2a2316;
+  --danger: #ec9a9a;
+  --danger-soft: #2c1a1a;
+  --focus: #8cc4bc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-sunken: var(--surface-sunken);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-on-primary: var(--on-primary);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-focus: var(--focus);
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+  --radius-control: 0.5rem;
+  --radius-panel: 0.875rem;
+  --shadow-panel: 0 1px 2px rgb(16 32 40 / 6%), 0 8px 24px -12px rgb(16 32 40 / 12%);
+}
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@layer base {
+  html {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100dvh;
+    line-height: 1.55;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--foreground);
+  }
+
+  /* SvelteKit's route announcer ships an inline style attribute, which our CSP blocks. */
+  #svelte-announcer {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

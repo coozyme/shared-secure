@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.wrangler/
+coverage/
+test-results/
+playwright-report/
+*.log
+.DS_Store
+
+# Local secrets. Use .dev.vars.example as the template.
+.dev.vars
+.env
+.env.*
+!.env.example
+.svelte-kit/
